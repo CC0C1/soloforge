@@ -1,13 +1,14 @@
-# SoloForge V3.0
+# SoloForge
 
 **可视化结构化创作工具** — 用节点图谱组织思维，用权重链路驱动叙事
 
-###前言
+### 前言
+
 项目使用导出/导入json的方式，将json文件提交给AI生成对应提示词空内容，模块/连线/权重由你随意发挥
-1、json文件本质上是分配提示词的集合
-2、当前3.0版本是本地离线可用
-3、没有任何外部API
-4、完整版本号：06526.3.0
+- json文件本质上是分配提示词的集合
+- 当前3.0版本是本地离线可用
+- 没有任何外部API
+
 
 <img width="1658" height="1170" alt="1" src="https://github.com/user-attachments/assets/0e7a114e-baff-4d97-9338-ff41a88a7dff" />
 
@@ -102,7 +103,7 @@ SoloForge 是一个基于节点图谱的可视化创作工具。它不是传统�
 
 ## 快速开始
 
-1. 下载 `SoloForge V3.0.html`
+1. 下载 `SoloForge.html`
 2. 用 Chrome / Edge 浏览器打开
 3. 点击左上角 LOGO 打开模块库，拖拽模块到画布
 4. 点击模块端口（左右圆点）拖拽连线
