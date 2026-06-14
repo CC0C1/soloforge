@@ -3,71 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SoloForge - 试用入口</title>
+  <title>SoloForge - 结构化思维可视化创作工具</title>
+  <meta name="description" content="SoloForge 是一个基于节点图谱的可视化创作工具，帮助你把创意、剧情和知识体系组织成可操作的模块与连线。" />
   <style>
     :root {
       color-scheme: dark;
       --bg: #07111f;
-      --panel: rgba(15, 23, 42, 0.9);
+      --panel: rgba(15, 23, 42, 0.92);
+      --panel-soft: rgba(30, 41, 59, 0.76);
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #38bdf8;
       --accent-2: #818cf8;
+      --success: #34d399;
     }
 
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-      background: linear-gradient(135deg, var(--bg), #0f172a 60%, #111827);
+      background: radial-gradient(circle at top left, #0f172a 0%, var(--bg) 45%, #020617 100%);
       color: var(--text);
       min-height: 100vh;
     }
 
+    a { color: inherit; }
     .shell {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 24px 20px 40px;
     }
 
     .hero {
-      background: var(--panel);
+      background: linear-gradient(135deg, rgba(15,23,42,0.96), rgba(17,24,39,0.92));
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 24px 24px 28px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      border-radius: 24px;
+      padding: 28px 28px 32px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.28);
+      margin-bottom: 20px;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
       margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(52, 211, 153, 0.16);
+      color: #bbf7d0;
+      font-size: 0.92rem;
+      border: 1px solid rgba(52, 211, 153, 0.24);
     }
 
     .hero h1 {
       margin: 0 0 10px;
-      font-size: 2rem;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.15;
     }
 
     .hero p {
-      margin: 0 0 16px;
+      margin: 0;
       color: var(--muted);
-      line-height: 1.6;
-      max-width: 760px;
+      line-height: 1.7;
+      max-width: 820px;
+      font-size: 1.02rem;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 8px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.12);
-      color: #bae6fd;
-      font-size: 0.95rem;
-      border: 1px solid rgba(56, 189, 248, 0.2);
+      margin-top: 18px;
     }
 
     .btn {
@@ -83,15 +98,48 @@
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(56, 189, 248, 0.22);
+      box-shadow: 0 10px 24px rgba(56, 189, 248, 0.2);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0 20px;
+    }
+
+    .card {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--panel-soft);
+      border: 1px solid rgba(255,255,255,0.08);
+      min-height: 110px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     .frame-wrap {
-      background: var(--panel);
+      background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(17,24,39,0.95));
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.25);
       padding: 10px;
     }
 
@@ -102,11 +150,22 @@
       border: 0;
       display: block;
       background: white;
-      border-radius: 12px;
+      border-radius: 16px;
+    }
+
+    .note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .feature-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 1.5rem; }
+      .hero { padding: 22px 18px 24px; }
       iframe { height: 70vh; min-height: 560px; }
     }
   </style>
@@ -114,18 +173,37 @@
 <body>
   <div class="shell">
     <section class="hero">
-      <h1>SoloForge 试用入口</h1>
-      <p>这是一个可视化创作工具，适合组织思路、搭建剧情结构、管理模块与连线关系。下面这个容器内就是可直接体验的应用界面。</p>
+      <div class="hero-top">
+        <span class="badge">在线试用 · 可直接嵌入项目页</span>
+        <span class="badge">Chrome / Edge 推荐</span>
+      </div>
+      <h1>SoloForge 让复杂创意变成可操作的结构</h1>
+      <p>它不是传统写作软件，而是一个面向剧情、知识体系、项目规划的可视化组织工具。你可以把模块拖进画布、建立连线、设置权重，让思路从混乱变成清晰的结构。</p>
       <div class="actions">
-        <span class="pill">内嵌试用</span>
-        <span class="pill">无需跳转</span>
-        <a class="btn" href="SoloForgeV3.4.html" target="_blank">单独打开</a>
+        <a class="btn" href="SoloForgeV3.4.html" target="_blank">直接体验应用</a>
+        <a class="btn secondary" href="https://github.com/CC0C1/soloforge" target="_blank">查看源码</a>
+      </div>
+
+      <div class="feature-grid">
+        <div class="card">
+          <h3>模块化创作</h3>
+          <p>把内容拆成独立模块，轻松拖拽、复制、组织与重构。</p>
+        </div>
+        <div class="card">
+          <h3>权重连线</h3>
+          <p>用连线和权重表达因果、优先级与信息流向，让逻辑更清楚。</p>
+        </div>
+        <div class="card">
+          <h3>本地优先</h3>
+          <p>纯静态页面，零依赖，支持本地保存与导入导出。</p>
+        </div>
       </div>
     </section>
 
     <section class="frame-wrap">
-      <iframe src="SoloForgeV3.4.html" title="SoloForge 应用"></iframe>
+      <iframe src="SoloForgeV3.4.html" title="SoloForge 试用界面"></iframe>
     </section>
+    <div class="note">你可以在这里直接试用，或者在新标签页中单独打开完整界面。</div>
   </div>
 </body>
 </html>
