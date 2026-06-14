@@ -1,5 +1,5 @@
-
-
+最新版：https://cc0c1.github.io/soloforge/SoloForgeV3.4.html
+工具本质是一段提示词结构，需要结合你的想法一起发给Agent才有作用，否则只是一个单机思维编辑器。
 
 <img width="1658" height="1170" alt="1" src="https://github.com/user-attachments/assets/0e7a114e-baff-4d97-9338-ff41a88a7dff" />
 
